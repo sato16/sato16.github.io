@@ -1,0 +1,49 @@
+{% assign locale = include.locale | default: site.locale %}
+{% assign same_lang_posts = site.posts | where: "lang", page.lang %}
+
+{% assign current_index = nil %}
+{% for post in same_lang_posts %}
+  {% if post.url == page.url %}
+    {% assign current_index = forloop.index0 %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign lang_previous = nil %}
+{% assign lang_next = nil %}
+
+{% if current_index != nil %}
+  {% assign previous_index = current_index | plus: 1 %}
+  {% if previous_index < same_lang_posts.size %}
+    {% assign lang_previous = same_lang_posts[previous_index] %}
+  {% endif %}
+
+  {% if current_index > 0 %}
+    {% assign next_index = current_index | minus: 1 %}
+    {% assign lang_next = same_lang_posts[next_index] %}
+  {% endif %}
+{% endif %}
+
+{% if lang_previous or lang_next %}
+  <nav class="pagination">
+    {% if lang_previous %}
+      <a href="{{ lang_previous.url | relative_url }}" class="pagination--pager" title="{{ lang_previous.title | markdownify | strip_html }}">
+        {{ site.data.ui-text[locale].pagination_previous | default: "Previous" }}
+      </a>
+    {% else %}
+      <span class="pagination--pager disabled">
+        {{ site.data.ui-text[locale].pagination_previous | default: "Previous" }}
+      </span>
+    {% endif %}
+
+    {% if lang_next %}
+      <a href="{{ lang_next.url | relative_url }}" class="pagination--pager" title="{{ lang_next.title | markdownify | strip_html }}">
+        {{ site.data.ui-text[locale].pagination_next | default: "Next" }}
+      </a>
+    {% else %}
+      <span class="pagination--pager disabled">
+        {{ site.data.ui-text[locale].pagination_next | default: "Next" }}
+      </span>
+    {% endif %}
+  </nav>
+{% endif %}

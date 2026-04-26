@@ -1,0 +1,15 @@
+main_en:
+  - title: "Publications & Presentations"
+    url: /publications/
+  - title: "CV"
+    url: /cv/
+  - title: "Updates"
+    url: /posts/
+
+main_ja:
+  - title: "研究業績"
+    url: /ja/publications/
+  - title: "経歴"
+    url: /ja/cv/
+  - title: "更新情報"
+    url: /ja/posts/

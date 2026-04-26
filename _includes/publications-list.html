@@ -1,0 +1,80 @@
+{%- comment -%}
+Render normalized publications and presentations from _data.
+Badge labels are language-specific, while the underlying data is shared.
+{%- endcomment -%}
+
+{% assign all_works = site.data.publications | concat: site.data.presentations %}
+{% assign all_works_sorted = all_works | sort: "year" | reverse %}
+{% assign year_groups = all_works_sorted | group_by: "year" %}
+
+<div class="pub-year-nav">
+  {% for group in year_groups %}
+    {% if group.name %}
+      <a href="#year-{{ group.name }}">{{ group.name }}</a>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% for group in year_groups %}
+  {% if group.name %}
+  <div class="pub-year-section" id="year-{{ group.name }}">
+    <h2>{{ group.name }}</h2>
+
+    {% assign works_in_year = group.items | sort: "date" | reverse %}
+
+    {% for item in works_in_year %}
+      <div class="pub-entry">
+        <p class="pub-citation{% if item.category == "presentation" %} pub-citation--presentation{% endif %}">
+          {% if item.authors_html %}
+            {{ item.authors_html }}
+          {% else %}
+            {{ item.authors_text }}
+          {% endif %}.
+          &ldquo;<span class="pub-title">{{ item.title }}</span>.&rdquo;
+          {% if item.category == "presentation" %}
+            <span class="pub-venue">{{ item.event }}</span>
+            {% if item.date %}, {{ item.date }}{% endif %}.
+          {% else %}
+            <span class="pub-venue">{{ item.venue }}</span>
+            {% if item.volume %}, {{ item.volume }}{% endif %}
+            {% if item.number %}({{ item.number }}){% endif %}
+            {% if item.pages %}, {{ item.pages }}{% endif %}
+            {% if item.date %}, {{ item.date }}{% endif %}.
+            {% if item.doi_url %}
+              <a class="pub-doi" href="{{ item.doi_url }}">DOI</a>
+            {% endif %}
+          {% endif %}
+
+          {% if item.category == "journal_article" %}
+            <span class="pub-badge pub-badge--journal">{% if page.lang == "ja" %}原著論文{% else %}Journal article{% endif %}</span>
+            {% if item.is_japanese_language %}
+              <span class="pub-badge pub-badge--japanese">{% if page.lang == "ja" %}日本語{% else %}In Japanese{% endif %}</span>
+            {% endif %}
+          {% elsif item.category == "other_publication" %}
+            <span class="pub-badge pub-badge--other">{% if page.lang == "ja" %}その他出版物{% else %}Other publication{% endif %}</span>
+            {% if item.is_japanese_language %}
+              <span class="pub-badge pub-badge--japanese">{% if page.lang == "ja" %}日本語{% else %}In Japanese{% endif %}</span>
+            {% endif %}
+          {% elsif item.category == "presentation" and item.presentation_type == "poster_presentation" %}
+            <span class="pub-badge pub-badge--poster">{% if page.lang == "ja" %}ポスター発表{% else %}Poster presentation{% endif %}</span>
+            {% if item.is_japanese_language %}
+              <span class="pub-badge pub-badge--japanese">{% if page.lang == "ja" %}日本語{% else %}In Japanese{% endif %}</span>
+            {% endif %}
+          {% elsif item.category == "presentation" %}
+            <span class="pub-badge pub-badge--presentation">{% if page.lang == "ja" %}学会発表{% else %}Presentation{% endif %}</span>
+            {% if item.is_japanese_language %}
+              <span class="pub-badge pub-badge--japanese">{% if page.lang == "ja" %}日本語{% else %}In Japanese{% endif %}</span>
+            {% endif %}
+          {% endif %}
+        </p>
+
+        {% if item.equal_contribution_note %}
+          <div class="pub-note">{{ item.equal_contribution_note }}</div>
+        {% endif %}
+
+        <hr class="pub-divider">
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+{% endfor %}

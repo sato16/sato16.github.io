@@ -1,0 +1,95 @@
+{% comment %}
+Complete author-profile.html
+- Switches sidebar profile based on page.lang
+- English pages use site.author_en
+- Japanese pages use site.author_ja
+- Avatar and name link to the top page of the current language
+- RIKEN / 理化学研究所 can be linked separately by language
+- Lab for Cognitive Somnology can be linked separately by language
+
+Place this file at:
+  _includes/author-profile.html
+{% endcomment %}
+
+{% if page.lang == "ja" %}
+  {% assign author = site.author_ja %}
+  {% assign profile_home = '/ja/' | relative_url %}
+{% else %}
+  {% assign author = site.author_en %}
+  {% assign profile_home = '/' | relative_url %}
+{% endif %}
+
+{% if author.avatar %}
+  <div class="author__avatar">
+    <a href="{{ profile_home }}">
+      <img src="{{ author.avatar | relative_url }}" alt="{{ author.name }}">
+    </a>
+  </div>
+{% endif %}
+
+<div class="author__content">
+  <h3 class="author__name">
+    <a href="{{ profile_home }}">{{ author.name }}</a>
+  </h3>
+
+  {% if author.bio %}
+    <div class="author__bio">
+      {{ author.bio }}
+    </div>
+  {% endif %}
+</div>
+
+{% if author.location_label or author.affiliation_label or author.links %}
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">
+      {% if page.lang == "ja" %}
+        フォロー
+      {% else %}
+        {{ site.data.ui-text[site.locale].follow_label | default: "Follow" }}
+      {% endif %}
+    </button>
+
+    <ul class="author__urls social-icons">
+      {% if author.location_label %}
+        <li>
+          {% if author.location_url %}
+            <a href="{{ author.location_url }}">
+              <i class="fas fa-fw fa-location-dot" aria-hidden="true"></i>
+              <span class="label">{{ author.location_label }}</span>
+            </a>
+          {% else %}
+            <i class="fas fa-fw fa-location-dot" aria-hidden="true"></i>
+            <span>{{ author.location_label }}</span>
+          {% endif %}
+        </li>
+      {% endif %}
+
+      {% if author.affiliation_label %}
+        <li class="author__urls-affiliation">
+          {% if author.affiliation_url %}
+            <a href="{{ author.affiliation_url }}">
+              <i class="fas fa-fw fa-bed" aria-hidden="true"></i>
+              <span class="label">{{ author.affiliation_label }}</span>
+            </a>
+          {% else %}
+            <i class="fas fa-fw fa-bed" aria-hidden="true"></i>
+            <span>{{ author.affiliation_label }}</span>
+          {% endif %}
+        </li>
+      {% endif %}
+
+      {% for link in author.links %}
+        {% if link.label and link.url %}
+          <li>
+            <a href="{{ link.url }}">
+              {% if link.icon %}
+                <i class="{{ link.icon }}" aria-hidden="true"></i>
+              {% endif %}
+              <span class="label">{{ link.label }}</span>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

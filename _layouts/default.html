@@ -1,0 +1,44 @@
+---
+---
+
+{%- assign locale = page.locale | default: layout.locale | default: site.locale %}
+{%- assign html_lang = page.lang | default: locale %}
+
+<!doctype html>
+
+{% include copyright.html %}
+<html lang="{{ html_lang | replace: "_", "-" | default: "en" }}" class="no-js">
+
+  <head>
+    {% include head.html locale=locale %}
+    {% include head/custom.html %}
+  </head>
+
+  <body class="layout--{{ page.layout | default: layout.layout }} lang-{{ page.lang | default: 'en' }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}" dir="{% if site.rtl %}rtl{% else %}ltr{% endif %}">
+
+    {% include_cached skip-links.html locale=locale %}
+
+    <!-- Changed from include_cached to include so page.lang/page.lang_switch_url can work -->
+    {% include masthead.html locale=locale %}
+
+    <div class="initial-content">
+      {{ content }}
+      {% include after-content.html %}
+    </div>
+
+    {% if site.search == true %}
+      <div class="search-content">
+        {% include_cached search/search_form.html locale=locale %}
+      </div>
+    {% endif %}
+
+    <div id="footer" class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include_cached footer.html locale=locale %}
+      </footer>
+    </div>
+
+    {% include scripts.html locale=locale %}
+  </body>
+</html>

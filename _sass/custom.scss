@@ -1,0 +1,428 @@
+/* Shared page cards and compact content blocks */
+.home-overview,
+.about-intro {
+  font-size: 0.94rem;
+  line-height: 1.72;
+  margin-bottom: 2rem;
+}
+
+.about-intro {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  margin-bottom: 1.4rem;
+}
+
+.lang-ja .home-overview {
+  line-height: 1.78;
+}
+
+.lang-ja .about-intro {
+  line-height: 1.8;
+}
+
+.home-stack,
+.about-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.about-stack {
+  margin-bottom: 1.4rem;
+}
+
+.home-row-half,
+.about-row-half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.home-card,
+.about-card,
+.cv-intro-card {
+  border: 1px solid #e8ecef;
+  border-radius: 0.8rem;
+  padding: 1rem 1.1rem;
+  background: #fcfcfc;
+}
+
+.cv-intro-card {
+  margin-bottom: 1.3rem;
+}
+
+.home-card h3,
+.about-card h3 {
+  margin: 0 0 0.55rem 0;
+  font-size: 1rem;
+}
+
+.home-card p,
+.about-card p,
+.about-card ul,
+.cv-intro-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.cv-intro-card p {
+  font-size: 0.94rem;
+}
+
+.lang-ja .home-card p,
+.lang-ja .about-card p,
+.lang-ja .about-card ul,
+.lang-ja .cv-intro-card p {
+  line-height: 1.7;
+}
+
+.home-chips,
+.about-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.8rem 0 2rem 0;
+}
+
+.about-chips {
+  margin-top: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.home-chip,
+.about-chip {
+  display: inline-block;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  background: #eef3f7;
+  border: 1px solid #d7e2eb;
+}
+
+.about-timeline,
+.cv-timeline {
+  position: relative;
+  margin: 0.75rem 0 1.5rem 0;
+  padding-left: 1.2rem;
+}
+
+.cv-timeline {
+  margin-bottom: 0;
+}
+
+.about-timeline::before,
+.cv-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.3rem;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  width: 2px;
+  background: #e5e9ec;
+}
+
+.about-timeline-item,
+.cv-timeline-item {
+  position: relative;
+  margin: 0 0 1rem 0;
+}
+
+.about-timeline-item::before,
+.cv-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.02rem;
+  top: 0.35rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: #7a8b99;
+}
+
+.about-timeline-date,
+.cv-date {
+  font-size: 0.78rem;
+  color: #6f7d88;
+  margin-bottom: 0.12rem;
+}
+
+.about-timeline-title,
+.cv-title {
+  font-weight: 600;
+}
+
+.cv-section {
+  margin-bottom: 1.8rem;
+}
+
+.cv-sub {
+  margin-top: 0.15rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.lang-ja .cv-sub {
+  line-height: 1.65;
+}
+
+.cv-list {
+  margin: 0.7rem 0 0 0;
+  padding-left: 1.2rem;
+}
+
+.cv-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.lang-ja .cv-list li {
+  line-height: 1.7;
+}
+
+.cv-list li::marker {
+  color: #4f5d68;
+  font-size: 1.08em;
+}
+
+/* Compact citation-style publications page */
+.pub-year-nav {
+  margin: 0 0 0.7rem 0;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.lang-ja .pub-year-nav {
+  font-size: 0.76rem;
+}
+
+.pub-year-nav a {
+  text-decoration: none;
+  margin-right: 0.55rem;
+}
+
+.pub-year-section {
+  margin-top: 1.25rem;
+}
+
+.pub-year-section h2 {
+  margin-bottom: 0.45rem;
+}
+
+.pub-entry {
+  margin: 0.55rem 0 0.7rem 0;
+}
+
+.pub-citation {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.pub-citation--presentation {
+  font-size: 0.72rem;
+  line-height: 1.48;
+}
+
+.pub-title {
+  font-weight: 700;
+}
+
+.pub-venue {
+  font-style: italic;
+}
+
+.pub-self-wrap {
+  text-decoration: underline;
+  text-underline-offset: 0.08em;
+  text-decoration-thickness: 0.06em;
+}
+
+.pub-self-marker {
+  font-size: 0.82em;
+  margin-right: 0.04em;
+}
+
+.pub-badge {
+  display: inline-block;
+  padding: 0.08rem 0.38rem;
+  border-radius: 999px;
+  font-size: 0.60rem;
+  font-weight: 600;
+  line-height: 1.15;
+  vertical-align: baseline;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  margin-left: 0.35rem;
+}
+
+.pub-badge--journal {
+  background: #e8f1fb;
+  color: #24527a;
+  border-color: #c7ddf4;
+}
+
+.pub-badge--other {
+  background: #f2edf8;
+  color: #5d3d7a;
+  border-color: #ddd0ed;
+}
+
+.pub-badge--presentation {
+  background: #edf5ec;
+  color: #3f6b39;
+  border-color: #d6e8d2;
+}
+
+.pub-badge--poster {
+  background: #fff2e5;
+  color: #9a5a12;
+  border-color: #ffd7ad;
+}
+
+.pub-badge--japanese {
+  background: #f7eef7;
+  color: #7a3f79;
+  border-color: #e5d1e5;
+}
+
+.pub-doi {
+  margin-left: 0.35rem;
+  white-space: nowrap;
+}
+
+.pub-note {
+  font-size: 0.74rem;
+  line-height: 1.35;
+  margin-top: 0.12rem;
+  color: #666;
+}
+
+.pub-divider {
+  border: 0;
+  border-top: 1px solid #eceff1;
+  margin: 0.55rem 0 0 0;
+}
+
+/* Home page section headings */
+.layout--home .archive__subtitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: inherit;
+  border-bottom: 1px solid #e5e9ec;
+  padding-bottom: 0.4rem;
+  margin-top: 2.4rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.3;
+}
+
+.layout--home .archive__subtitle:first-of-type {
+  margin-top: 0;
+}
+
+/* Hover underline for the top-left site title */
+.masthead .site-title {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.masthead .site-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18rem;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.85;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.18s ease;
+}
+
+.masthead .site-title:hover::after,
+.masthead .site-title:focus::after {
+  transform: scaleX(1);
+}
+
+/* Related posts spacing and heading */
+.custom-related-posts {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e5e9ec;
+}
+
+.custom-related-posts h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #5f6b76;
+  margin-bottom: 1.1rem;
+  line-height: 1.3;
+}
+
+.custom-related-posts .archive__item {
+  margin-bottom: 1.25rem;
+}
+
+.custom-related-posts .archive__item-excerpt {
+  margin-top: 0.35rem;
+}
+
+.author__urls-affiliation .label {
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+@media (max-width: 48em) {
+  .home-row-half,
+  .about-row-half {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Desktop-only sidebar enlargement without pushing content downward */
+@media (min-width: 80em) {
+  .sidebar {
+    width: 15rem;
+    opacity: 1;
+  }
+
+  .author__avatar img {
+    max-width: 150px;
+  }
+
+  .author__name {
+    font-size: 1.8rem;
+  }
+
+  .author__bio {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .author__urls li,
+  .author__urls li a,
+  .author__urls .label {
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .author__urls .author__urls-affiliation .label {
+    font-size: 0.88rem;
+  }
+
+  .author__urls i {
+    font-size: 0.98rem;
+  }
+
+  .layout--single .page,
+  .layout--archive .archive,
+  .layout--home .archive {
+    float: right;
+    width: calc(100% - 17rem);
+    padding-left: 2rem;
+  }
+}

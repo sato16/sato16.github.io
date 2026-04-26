@@ -1,0 +1,195 @@
+# Welcome to Jekyll!
+#
+# This is a complete _config.yml for your current academic website setup.
+# It includes:
+# - Minimal Mistakes remote theme
+# - English/Japanese profile switching support
+# - Search enabled
+# - Wide layout defaults for pages and posts
+# - Footer links
+#
+# Notes:
+# - This file is reloaded only when Jekyll is restarted.
+# - After editing _config.yml, stop and restart `bundle exec jekyll serve`.
+
+# -----------------------------
+# Site settings
+# -----------------------------
+title: "Fumiaki Sato"
+email:
+description: >-
+  Personal academic website of Fumiaki Sato.
+# baseurl: ""  # Uncomment only if you deploy under a subpath
+# url: ""      # Uncomment if you want to set the full site URL explicitly
+
+# The locale affects some built-in UI text defaults.
+locale: "en-US"
+
+# Skin and search
+minimal_mistakes_skin: "default"
+search: true
+
+# Optional social usernames kept commented for future use
+# twitter_username:
+# github_username: sato16
+
+# -----------------------------
+# Build settings
+# -----------------------------
+markdown: kramdown
+remote_theme: "mmistakes/minimal-mistakes"
+
+# Output settings
+permalink: /:categories/:title/
+paginate: 5
+paginate_path: /page:num/
+timezone: "Asia/Tokyo"
+
+# Ensure pages in _pages are processed
+include:
+  - _pages
+
+# -----------------------------
+# Plugins
+# -----------------------------
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
+
+# -----------------------------
+# Exclusions
+# Keep raw exports, helper scripts, local caches, and validation output out of
+# the generated site.
+# -----------------------------
+exclude:
+  - data_sources/
+  - private_data/
+  - scripts/
+  - test/
+  - _site/
+  - .git/
+  - .jekyll-cache/
+  - .sass-cache/
+  - .DS_Store
+  - "*.jsonl"
+  - ".env"
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - .ruby-version
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# -----------------------------
+# Generic author object
+# Some themes/plugins expect site.author to exist.
+# Keep this minimal and stable.
+# -----------------------------
+author:
+  name: "Fumiaki Sato"
+
+# -----------------------------
+# English profile
+# Used on pages with: lang: en
+# -----------------------------
+
+author_en:
+  name: "Fumiaki Sato"
+  avatar: "/assets/images/profile_github.jpeg"
+  bio: "Postdoctoral researcher"
+  location_label: "RIKEN CBS"
+  location_url: "https://cbs.riken.jp/en/"
+  affiliation_label: "Lab for Cognitive Somnology"
+  affiliation_url: "https://tamakilabeng.wordpress.com/"
+  links:
+    - label: "researchmap"
+      icon: "fas fa-fw fa-link"
+      url: "https://researchmap.jp/FumiakiSato16"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/sato16"
+    - label: "Google Scholar"
+      icon: "fas fa-fw fa-graduation-cap"
+      url: "https://scholar.google.co.jp/citations?user=Fe0EDYgAAAAJ&hl=ja"
+    - label: "ORCID"
+      icon: "fab fa-fw fa-orcid"
+      url: "https://orcid.org/0000-0002-1159-2481"
+
+
+
+# -----------------------------
+# Japanese profile
+# Used on pages with: lang: ja
+# -----------------------------
+author_ja:
+  name: "佐藤 文昭"
+  avatar: "/assets/images/profile_github.jpeg"
+  bio: "特別研究員"
+  location_label: "理化学研究所 (CBS)"
+  location_url: "https://cbs.riken.jp/jp/"
+  affiliation_label: "認知睡眠学理研白眉研究チーム"
+  affiliation_url: "https://tamakilabeng.wordpress.com/"
+  links:
+    - label: "researchmap"
+      icon: "fas fa-fw fa-link"
+      url: "https://researchmap.jp/FumiakiSato16?lang=ja"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/sato16"
+    - label: "Google Scholar"
+      icon: "fas fa-fw fa-graduation-cap"
+      url: "https://scholar.google.co.jp/citations?user=Fe0EDYgAAAAJ&hl=ja"
+    - label: "ORCID"
+      icon: "fab fa-fw fa-orcid"
+      url: "https://orcid.org/0000-0002-1159-2481"
+
+# -----------------------------
+# Footer links
+# Sidebar links already provide these profiles, so keep the footer link list empty.
+# -----------------------------
+footer:
+  links: []
+
+# -----------------------------
+# Default front matter values
+# -----------------------------
+defaults:
+  # Default settings for posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: false
+      related: true
+      classes: wide
+
+  # Default settings for pages inside _pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      classes: wide
+
+# -----------------------------
+# Archives
+# -----------------------------
+category_archive:
+  type: liquid
+  path: /categories/
+
+tag_archive:
+  type: liquid
+  path: /tags/

@@ -1,0 +1,24 @@
+{% assign locale = include.locale | default: site.locale %}
+{% assign posts = site.posts | where_exp: "post", "post.hidden != true" | where: "lang", page.lang %}
+
+{% include before-related.html %}
+
+<div class="page__related custom-related-posts">
+  {% if page.lang == "ja" %}
+    <h2>関連記事</h2>
+  {% else %}
+    <h2>{{ site.data.ui-text[locale].related_label | default: "You May Also Enjoy" }}</h2>
+  {% endif %}
+
+  {% assign shown = 0 %}
+  {% for post in posts %}
+    {% if post.id == page.id %}
+      {% continue %}
+    {% endif %}
+    {% include archive-single.html locale=locale type="grid" %}
+    {% assign shown = shown | plus: 1 %}
+    {% if shown >= 4 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+</div>

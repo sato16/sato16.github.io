@@ -1,0 +1,26 @@
+---
+layout: archive
+author_profile: true
+---
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+
+{{ content }}
+
+{% if page.lang == "ja" %}
+  <h3 class="archive__subtitle">最新の投稿</h3>
+  {% assign posts_source = site.posts | where: "lang", "ja" %}
+{% else %}
+  <h3 class="archive__subtitle">Recent Posts</h3>
+  {% assign posts_source = site.posts | where: "lang", "en" %}
+{% endif %}
+
+{% for post in posts_source limit:5 %}
+  {% include archive-single.html type=entries_layout %}
+{% endfor %}
+
+{% if page.lang == "ja" %}
+  <p><a href="{{ '/ja/posts/' | relative_url }}">すべての更新情報を見る</a></p>
+{% else %}
+  <p><a href="{{ '/posts/' | relative_url }}">View all updates</a></p>
+{% endif %}
