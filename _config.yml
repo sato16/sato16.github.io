@@ -29,6 +29,16 @@ locale: "en-US"
 minimal_mistakes_skin: "default"
 search: true
 
+# -----------------------------
+# Analytics
+# GA4 measurement IDs are public identifiers, not secrets.
+# -----------------------------
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-CVXHVZBVX6"
+    anonymize_ip: true
+
 # Optional social usernames kept commented for future use
 # twitter_username:
 # github_username: sato16

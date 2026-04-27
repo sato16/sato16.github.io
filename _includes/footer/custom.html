@@ -1,0 +1,10 @@
+{% assign current_url = page.url | default: "" %}
+{% assign url_prefix = current_url | slice: 0, 4 %}
+
+<div class="analytics-notice">
+  {% if page.lang == "ja" or url_prefix == "/ja/" %}
+    今後の参考のために、Google Analytics を用いて匿名化されたアクセス解析を行っています。
+  {% else %}
+    This site uses Google Analytics to collect anonymized access statistics for future improvement.
+  {% endif %}
+</div>
